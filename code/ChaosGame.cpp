@@ -23,6 +23,26 @@ int main()
 	bool noRepeat = false;
 	int prevIndex = -1;
 
+	// Create a graphical text to display
+    sf::Font font;
+    if (!font.loadFromFile("/usr/share/fonts/truetype/ubuntu/Ubuntu-C.ttf"))
+        return EXIT_FAILURE;
+
+	sf::Text text("Hello SFML", font, 50);
+	string status = (noRepeat ? "On" : "Off");
+	string prompt = "Place any number of vertices, hit enter, and place your last point\nNo repeat: " + status;
+	// set the string to display
+	text.setString(prompt);
+
+	// set the character size
+	text.setCharacterSize(24); // in pixels, not points!
+
+	// set the color
+	text.setFillColor(sf::Color::White);
+
+	// set the text style
+	text.setStyle(sf::Text::Bold);
+
 	while (window.isOpen())
 	{
 		/*
@@ -42,7 +62,10 @@ int main()
 				if (event.key.code == Keyboard::Key::N)
 				{
 					noRepeat = !noRepeat;
-					cout << "Repeat: " << noRepeat << endl;
+					cout << "No Repeat: " << noRepeat << endl;
+					status = (noRepeat ? "On" : "Off");
+					prompt = "Place any number of vertices, hit enter, and place your last point\nNo repeat: " + status;
+					text.setString(prompt);
 				}
 			}
 			if (event.type == Event::Closed)
@@ -126,7 +149,11 @@ int main()
 			rect.setFillColor(Color::Red);
 			window.draw(rect);
 		}
-		///TODO:  Draw points
+		
+
+	// inside the main loop, between window.clear() and window.display()
+	window.draw(text);
+
 		window.display();
 	}
 }
