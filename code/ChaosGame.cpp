@@ -30,7 +30,7 @@ int main()
 
 	sf::Text text("Hello SFML", font, 50);
 	string status = (noRepeat ? "On" : "Off");
-	string prompt = "Place any number of vertices, hit enter, and place your last point\nNo repeat: " + status;
+	string prompt = "Place any number of vertices, hit enter, and place your last point\nNo repeat (N): " + status;
 	// set the string to display
 	text.setString(prompt);
 
@@ -53,6 +53,9 @@ int main()
 		Event event;
 		while (window.pollEvent(event))
 		{
+			status = (noRepeat ? "On" : "Off");
+			prompt = "Place any number of vertices, hit enter, and place your last point\nNo repeat (N): " + status;
+			text.setString(prompt);
 			if (Keyboard::isKeyPressed(Keyboard::Enter))
 			{
 				start = true;
@@ -62,10 +65,7 @@ int main()
 				if (event.key.code == Keyboard::Key::N)
 				{
 					noRepeat = !noRepeat;
-					cout << "No Repeat: " << noRepeat << endl;
-					status = (noRepeat ? "On" : "Off");
-					prompt = "Place any number of vertices, hit enter, and place your last point\nNo repeat: " + status;
-					text.setString(prompt);
+					cout << "No Repeat: (N)" << noRepeat << endl;
 				}
 			}
 			if (event.type == Event::Closed)
