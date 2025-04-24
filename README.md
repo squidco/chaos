@@ -9,3 +9,6 @@ The chaos game is an experiment with creating something out of completely random
 
 # Options
 No repeat: Press 'N' to force the program to not choose the same vertice twice in a row when selecting a random vertice. Try making a square with this option enabled.
+
+# Libraries
+SFML 2.5.1
