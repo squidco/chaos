@@ -39,7 +39,7 @@ int main()
 			}
 			if (event.type == Event::KeyReleased)
 			{
-				if (event.key.scancode == Keyboard::Scan::N)
+				if (event.key.code == Keyboard::Key::N)
 				{
 					noRepeat = !noRepeat;
 					cout << "Repeat: " << noRepeat << endl;
